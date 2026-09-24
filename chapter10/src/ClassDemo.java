@@ -89,7 +89,7 @@ public class ClassDemo {
 		lastName.setColumns(10);
 		
 		JLabel display = new JLabel("");
-		display.setBounds(88, 115, 189, 189);
+		display.setBounds(83, 149, 583, 201);
 		panel.add(display);
 		
 		JButton submit = new JButton("Submit");
