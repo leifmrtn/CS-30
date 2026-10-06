@@ -65,10 +65,6 @@ public class MetricConversion {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-
-
-		
-		
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 231, 181);

@@ -1,3 +1,17 @@
+/*
+
+Program: ????.java          Last Date of this Revision: September 30, 2026
+
+Purpose: An application that uses nested for loops to output a table that diplays number in 
+ multiples of ten.
+
+Author: Your Name, 
+School: CHHS
+Course: Computer Programming ??
+ 
+
+*/
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;

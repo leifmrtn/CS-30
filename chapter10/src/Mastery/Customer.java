@@ -3,16 +3,15 @@ package Mastery;
 public class Customer {
 	private String firstName, lastName;
 	
+	public Customer(String fName, String lName) {
+		firstName = fName;
+		lastName = lName;
+	}
+	
 	public String toString() {
+		String custString;
 		
+		custString = firstName + " " + lastName + "\n";
+		return custString;
 	}
 }
-/*
-Variables: firstName, lastName
-
-methods:
- *toString returns customer informatino 
-
-  
- *  */
- 

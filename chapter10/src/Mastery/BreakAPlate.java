@@ -1,8 +1,18 @@
+/*
+
+Program: BreakAPlate.java          Last Date of this Revision: October 2, 2026
+
+Purpose: Allow the user to play a game where they break plates to win prizes
+
+Author: Leif Martin, 
+School: CHHS
+Course: Computer Programming CSE3010
+ 
+*/
 
 package Mastery;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -16,8 +26,6 @@ import java.awt.Font;
 
 
 public class BreakAPlate {
-	
-	
 	
 	private JFrame frame;
 	private JPanel panel;
@@ -52,14 +60,12 @@ public class BreakAPlate {
 	 */
 	private void initialize() {
 		
-		
 		ImageIcon placeHolder = new ImageIcon("../chapter10/src/Mastery/placeholder.gif");
 		ImageIcon plates_none_broken = new ImageIcon("../chapter10/src/Mastery/plates_none_broken.gif");
 		ImageIcon plates_two_broken = new ImageIcon("../chapter10/src/Mastery/plates_two_broken.gif");
 		ImageIcon plates_all_broken = new ImageIcon("../chapter10/src/Mastery/plates_all_broken.gif");
 		ImageIcon sticker = new ImageIcon("../chapter10/src/Mastery/sticker.gif");
 		ImageIcon tiger_plush = new ImageIcon("../chapter10/src/Mastery/tiger_plush.gif");
-		
 		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
@@ -109,10 +115,8 @@ public class BreakAPlate {
 			}
 		});
 		
-		play.setBounds(10, 127, 196, 82);
+		play.setBounds(37, 140, 196, 82);
 		panel.add(play);
 	}
-	
-	
 }
 

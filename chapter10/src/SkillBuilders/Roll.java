@@ -1,3 +1,16 @@
+/*
+
+Program: roll.java          Last Date of this Revision: October 30, 2026
+
+Purpose: An application that uses nested for loops to output a table that diplays number in 
+ multiples of ten.
+
+Author: Your Name, 
+School: CHHS
+Course: Computer Programming ??
+ 
+
+*/
 package SkillBuilders;
 
 import java.awt.EventQueue;

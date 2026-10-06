@@ -1,28 +1,38 @@
+/*
+
+Program: LocalBank.java          Last Date of this Revision: October 6, 2026
+
+Purpose: Allow a user to create or delete their bank account, and withdraw, deposit or check their ballance
+
+Author: Leif Martin, 
+School: CHHS
+Course: Computer Programming CSE3010
+
+*/
+
 package Mastery;
 
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import java.awt.BorderLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class LocalBank {
 
 	private JFrame frame;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField inputAccountID, inputDepositWithdrawel, inputFirstName, inputLastName, inputBeginningBalance;
+	private JComboBox selectAction;
+	private JTextArea outputTxt;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -36,95 +46,120 @@ public class LocalBank {
 		});
 	}
 
-	/**
-	 * Create the application.
-	 */
 	public LocalBank() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
+		
+		Bank bank = new Bank();
+		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 500);
+		frame.setBounds(100, 100, 302, 455);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
+
+		selectAction = new JComboBox();
+		selectAction.setModel(new DefaultComboBoxModel(new String[] {"Deposit", "Withdrawel", "Check Balance", "Add Account", "Remove Account"}));
+		selectAction.setBounds(20, 36, 250, 22);
+		panel.add(selectAction);
 		
-		JButton btnNewButton = new JButton("Process Transaction");
-		btnNewButton.setBounds(24, 427, 214, 23);
-		panel.add(btnNewButton);
+		JLabel selectActionTxt = new JLabel("Select an Action");
+		selectActionTxt.setBounds(20, 11, 113, 14);
+		panel.add(selectActionTxt);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(24, 36, 30, 22);
-		panel.add(comboBox);
+		JLabel completeInformationTxt = new JLabel("Complete the information in RED");
+		completeInformationTxt.setBounds(20, 69, 155, 14);
+		panel.add(completeInformationTxt);
 		
-		JLabel lblNewLabel = new JLabel("Select an Action");
-		lblNewLabel.setBounds(25, 11, 113, 14);
-		panel.add(lblNewLabel);
+		JLabel accountIDTxt = new JLabel("Account ID:");
+		accountIDTxt.setForeground(Color.RED);
+		accountIDTxt.setBounds(20, 94, 237, 14);
+		panel.add(accountIDTxt);
 		
-		JLabel lblNewLabel_1 = new JLabel("Complete the information in RED");
-		lblNewLabel_1.setBounds(24, 69, 155, 14);
-		panel.add(lblNewLabel_1);
+		JLabel depositWithdrawelTxt = new JLabel("Amount of deposit/withdrawel:");
+		depositWithdrawelTxt.setForeground(Color.RED);
+		depositWithdrawelTxt.setBounds(20, 140, 267, 14);
+		panel.add(depositWithdrawelTxt);
 		
-		JLabel lblNewLabel_2 = new JLabel("Account number:");
-		lblNewLabel_2.setForeground(Color.RED);
-		lblNewLabel_2.setBounds(20, 94, 46, 14);
-		panel.add(lblNewLabel_2);
+		JLabel firstNameTxt = new JLabel("First Name:");
+		firstNameTxt.setBounds(20, 185, 218, 14);
+		panel.add(firstNameTxt);
 		
-		JLabel lblNewLabel_2_1 = new JLabel("Amount of deposit/withdrawel:");
-		lblNewLabel_2_1.setForeground(Color.RED);
-		lblNewLabel_2_1.setBounds(43, 136, 46, 14);
-		panel.add(lblNewLabel_2_1);
+		JLabel lastNameTxt = new JLabel("Last Name:");
+		lastNameTxt.setBounds(20, 233, 113, 14);
+		panel.add(lastNameTxt);
 		
-		JLabel lblFirstName = new JLabel("First Name:");
-		lblFirstName.setBounds(39, 196, 113, 14);
-		panel.add(lblFirstName);
+		JLabel beginningBalanceTxt = new JLabel("Beginning Balance:");
+		beginningBalanceTxt.setBounds(20, 278, 246, 14);
+		panel.add(beginningBalanceTxt);
 		
-		JLabel lblLastName = new JLabel("Last Name:");
-		lblLastName.setBounds(39, 292, 113, 14);
-		panel.add(lblLastName);
+		inputAccountID = new JTextField();
+		inputAccountID.setBounds(20, 109, 250, 20);
+		panel.add(inputAccountID);
+		inputAccountID.setColumns(10);
 		
-		JLabel lblBeginningBalance = new JLabel("Beginning Balance:");
-		lblBeginningBalance.setBounds(24, 358, 113, 14);
-		panel.add(lblBeginningBalance);
+		inputDepositWithdrawel = new JTextField();
+		inputDepositWithdrawel.setColumns(10);
+		inputDepositWithdrawel.setBounds(20, 154, 250, 20);
+		panel.add(inputDepositWithdrawel);
 		
-		textField = new JTextField();
-		textField.setBounds(24, 105, 86, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		inputFirstName = new JTextField();
+		inputFirstName.setColumns(10);
+		inputFirstName.setBounds(20, 202, 250, 20);
+		panel.add(inputFirstName);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(20, 165, 86, 20);
-		panel.add(textField_1);
+		inputLastName = new JTextField();
+		inputLastName.setColumns(10);
+		inputLastName.setBounds(20, 247, 250, 20);
+		panel.add(inputLastName);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(24, 241, 86, 20);
-		panel.add(textField_2);
+		inputBeginningBalance = new JTextField();
+		inputBeginningBalance.setColumns(10);
+		inputBeginningBalance.setBounds(20, 293, 250, 20);
+		panel.add(inputBeginningBalance);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(24, 327, 86, 20);
-		panel.add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(24, 383, 86, 20);
-		panel.add(textField_4);
-		
-		JLabel lblAccountInfoDisplayed = new JLabel("Account Info Displayed Here");
-		lblAccountInfoDisplayed.setBounds(25, 402, 113, 14);
-		panel.add(lblAccountInfoDisplayed);
+		outputTxt = new JTextArea("Account Info Displayed Here");
+		outputTxt.setBounds(20, 324, 250, 48);
+		panel.add(outputTxt);
+			
+		JButton processTransaction = new JButton("Process Transaction");
+		processTransaction.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String acctID = inputAccountID.getText().trim();				
+				String lName = inputLastName.getText();
+				String fName = inputFirstName.getText();
+				double initialBal = Double.parseDouble(inputBeginningBalance.getText());				
+							
+				switch((String)selectAction.getSelectedItem()) {			
+				case "Deposit":
+					outputTxt.setText(bank.transaction("Deposit", acctID, Double.parseDouble(inputDepositWithdrawel.getText())));
+					break;			
+				case "Withdrawel":
+					outputTxt.setText(bank.transaction("Withdrawel", acctID, Double.parseDouble(inputDepositWithdrawel.getText())));
+					break;				
+				case "Remove Account":
+					outputTxt.setText(bank.deleteAccount(acctID));
+					break;								
+				case "Add Account":
+					 if(inputBeginningBalance.getText().isEmpty()) { outputTxt.setText("Please enter an initial balance."); break; }
+					outputTxt.setText(bank.addAccount(initialBal, fName, lName));
+					break;				
+				case "Check Balance":
+					outputTxt.setText(bank.getBalance(acctID));
+					break;			
+				default:
+					outputTxt.setText("Please select an action and try again.");
+					break;
+				}
+			}
+		});
+		processTransaction.setBounds(20, 384, 250, 23);
+		panel.add(processTransaction);
 	}
+
 }
-/*
- * Ask transaction type
- * add Account
- * 
- */
+
