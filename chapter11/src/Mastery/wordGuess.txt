@@ -1,0 +1,6 @@
+beans
+secret word
+computer
+java
+password
+keyboard

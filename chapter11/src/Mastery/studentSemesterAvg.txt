@@ -1,0 +1,1 @@
+Name: John Smith, Grade Level: 10, Semester: 2, Grades: [25.0, 25.0, 25.0, 25.0], Average: 25.0%Name: s, Grade Level: 2, Semester: 7, Grades: [7.0, 7.0, 7.0, 7.0], Average: 7.0%
